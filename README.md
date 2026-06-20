@@ -16,5 +16,5 @@
 ---
 
 
-![Экран Диспетчерского Центра](./src/assets/screenshot.png)
+![Экран Диспетчерского Центра](./src/assets/screenshot.PNG)
 
