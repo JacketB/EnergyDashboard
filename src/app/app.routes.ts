@@ -17,6 +17,11 @@ export const routes: Routes = [
     loadComponent: () => import('./Components/cells/cells-list.component')
       .then(m => m.CellListComponent)
   },
+  {
+    path: 'logs',
+    loadComponent: () => import('./Components/logs/logs.component')
+      .then(m => m.LogsComponent)
+  },
   { 
     path: '**', 
     redirectTo: 'dashboard' 

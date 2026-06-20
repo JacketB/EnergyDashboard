@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, signal, computed, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EnergyGridService } from '../../services/energy-grid.service';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -12,12 +12,12 @@ import { PowerCell } from '../../models/energy.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CellListComponent {
-  private energyService = inject(EnergyGridService);
+  private gridService = inject(EnergyGridService);
 
-  public cells = toSignal(this.energyService.getPowerCells(), { initialValue: [] as PowerCell[] });
+  public cells = toSignal(this.gridService.getPowerCells(), { initialValue: [] as PowerCell[] });
   public selectedStatus = signal<string>('all');
 
   onToggleMaintenance(cellId: string): void {
-    this.energyService.toggleCellMaintenance(cellId);
+    this.gridService.toggleCellMaintenance(cellId);
   }
 }

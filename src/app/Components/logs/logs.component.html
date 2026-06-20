@@ -1,0 +1,24 @@
+<div class="bg-slate-800/40 p-5 rounded-xl border border-slate-800 flex flex-col h-screen min-h-0">
+      <h2 class="text-base font-bold text-white mb-4 shrink-0 flex items-center">
+        <span class="w-2 h-4 bg-amber-500 rounded mr-2 inline-block"></span> Журнал событий АСУ ТП
+      </h2>
+      
+      <div class="flex-1 overflow-y-auto space-y-2 pr-1 font-mono text-xs min-h-0 scrollbar-none">
+        @for (log of logs(); track log.id) {
+          <div class="p-3 rounded-lg border border-l-4 transition-all shadow-sm"
+               [ngClass]="{
+                 'bg-slate-800 border-slate-700 border-l-blue-500 text-slate-200': log.severity === 'info',
+                 'bg-amber-950/30 border-amber-900/60 border-l-amber-500 text-amber-200': log.severity === 'warning',
+                 'bg-red-950/40 border-red-900/60 border-l-red-500 text-red-200': log.severity === 'critical'
+               }">
+            <div class="flex justify-between text-slate-400 text-[10px] mb-1">
+              <span class="font-bold uppercase tracking-wider">{{ log.source }}</span>
+              <span>{{ log.timestamp | date:'HH:mm:ss' }}</span>
+            </div>
+            <div class="text-xs break-words">{{ log.message }}</div>
+          </div>
+        } @empty {
+          <div class="text-center text-slate-500 py-6 italic text-sm">Нарушений в энергосети нет.</div>
+        }
+      </div>
+    </div>
