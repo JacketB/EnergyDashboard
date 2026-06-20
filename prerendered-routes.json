@@ -1,0 +1,8 @@
+{
+  "routes": {
+    "/EnergyDashboard": {},
+    "/EnergyDashboard/cells": {},
+    "/EnergyDashboard/dashboard": {},
+    "/EnergyDashboard/logs": {}
+  }
+}
